@@ -9,7 +9,10 @@ class EventsContainer extends Component {
     this.state = { events: [], filter: "", };
     this.updateFilter = this.updateFilter.bind(this);
     this.filterEvents = this.filterEvents.bind(this);
+    this.createEvent = this.createEvent.bind(this);
     this.retrieveEvents = this.retrieveEvents.bind(this);
+    this.sortBy = this.sortBy.bind(this);
+    this.compare = this.compare.bind(this);
   }
 
   componentDidMount() { this.retrieveEvents(); }
@@ -59,14 +62,52 @@ class EventsContainer extends Component {
     return filteredEvents;
   }
 
+  createEvent(event) {
+    const { events } = this.state
+    const newEvents = events.slice(0)
+    newEvents.push(event)
+    this.setState({ events: newEvents });
+  }
+
+  compare(a, b, field) {
+    if (a[field] < b[field]) {
+      return -1;
+    } else if (a[field] > b[field]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  sortBy(field) {
+    const { events } = this.state;
+    const sortedEvents = events.slice(0);
+
+    this.setState({
+      events: sortedEvents.sort(
+        (a, b) => this.compare(a, b, field)
+      )
+    })
+  }
+
   render() {
     return(
       <div className="events-container">
         <div className="events-sidebar">
-          <SearchBar updateFilter={ this.updateFilter }/>
-          <CreateEventForm />
+          <div
+            className="sort-by-title-button"
+            onClick={ () => this.sortBy("title") }>
+            Sort By Title
+          </div>
+          <div
+            className="sort-by-start-date-button"
+            onClick={ () => this.sortBy("start_time") }>
+            Sort By Start Date
+          </div>
+          <SearchBar updateFilter={this.updateFilter}/>
+          <CreateEventForm createEvent={this.createEvent}/>
         </div>
-        <EventsList events={ this.filterEvents() }/>
+        <EventsList events={this.filterEvents()}/>
       </div>
     );
   }

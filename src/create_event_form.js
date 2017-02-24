@@ -13,7 +13,9 @@ class CreateEventForm extends Component {
       endDate: moment().add(29, 'days'),
     }
     this.update = this.update.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
     this.handleApply = this.handleApply.bind(this);
+    this.handleCreateEvent = this.handleCreateEvent.bind(this);
   }
 
   update(field) {
@@ -32,6 +34,15 @@ class CreateEventForm extends Component {
 
   handleCreateEvent(e) {
     e.preventDefault();
+    if (this.state.title === "") {
+      this.handleErrors()
+    } else {
+      this.props.createEvent(this.state)
+    }
+  }
+
+  handleErrors() {
+
   }
 
   render() {
@@ -48,12 +59,12 @@ class CreateEventForm extends Component {
             className="create-event-form-title"
             placeholder="Title"
             value={title}
-            onChange={ (e) => this.update("title") }/>
+            onChange={this.update("title")}/>
           <textarea
             className="create-event-form-description"
             placeholder="Description"
             value={description}
-            onChange={ (e) => this.update("description") }/>
+            onChange={this.update("description")}/>
           <DateRangePicker
             showDropdowns={true}
             startDate={startDate}

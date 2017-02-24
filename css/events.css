@@ -56,11 +56,12 @@
   width: 75vw;
   height: calc(100vh - 50px);
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  overflow: scroll;
 }
 
 .events-list .list-item {
+  flex-direction: row;
   width: 175px;
   height: 100px;
   border: 1px solid black;
@@ -68,6 +69,10 @@
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
+}
+
+.events-list:nth-child(2) {
+  margin-left: 15px;
 }
 
 /*Create Events Form*/
