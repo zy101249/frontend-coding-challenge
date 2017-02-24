@@ -39,7 +39,7 @@
 .btn-group {
   box-sizing: border-box;
   width: 80%;
-  margin: 10px auto;
+  margin: 20px auto;
   display: block;
   float: none;
 }
@@ -57,13 +57,12 @@
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  align-items: baseline;
+  align-content: flex-start;
 }
 
 .events-list .list-item {
-  flex-direction: row;
   width: 175px;
-  height: 100px;
+  height: 80px;
   border: 1px solid #cccccc;
   color: #1178bd;
   margin-top: 20px;
@@ -73,6 +72,13 @@
   margin-left: 40px;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.list-item-title {
+  height: 20px;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 5px;
+  white-space: nowrap;
 }
 
 /*Create Events Form*/
@@ -85,8 +91,9 @@
 
 .create-event-form-header {
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
   width: 80%;
+  color: #f6682F;
   font-size: 20px;
 }
 
@@ -97,15 +104,6 @@
   width: 80%;
   padding: 5px;
   border: 1px solid #cccccc;
-}
-
-.create-event-form-description {
-  margin: 10px auto;
-  display: block;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  width: 80%;
-  padding: 5px;
 }
 
 .selected-date-button {
@@ -121,4 +119,11 @@
   display: block;
   margin: auto;
   padding: 5px;
+}
+
+/*Error-Alerts*/
+
+.error-alert {
+  outline: 5px auto #f45042;
+  outline-offset: -2px;
 }

@@ -50,7 +50,7 @@ class EventsContainer extends Component {
     const { events, filter } = this.state;
     const lowerCaseFilter = filter.toLowerCase();
     const filteredEvents = [];
-
+    
     events.forEach((event) => {
       const { title } = event;
       const lowerCaseTitle = title.toLowerCase();

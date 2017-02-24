@@ -14,7 +14,6 @@ class SearchBar extends Component {
 
   render() {
     const { body } = this.state;
-    const { updateFilter } = this.props;
 
     return (
       <div className="search-bar">

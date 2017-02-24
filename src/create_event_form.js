@@ -8,46 +8,45 @@ class CreateEventForm extends Component {
     super(props);
     this.state = {
       title: "",
-      description: "",
       startDate: moment(),
       endDate: moment().add(29, 'days'),
+      error_alert: ""
     }
     this.update = this.update.bind(this);
-    this.handleErrors = this.handleErrors.bind(this);
-    this.handleApply = this.handleApply.bind(this);
+    this.updateStartDate = this.updateStartDate.bind(this);
+    this.updateEndDate = this.updateEndDate.bind(this);
     this.handleCreateEvent = this.handleCreateEvent.bind(this);
   }
 
   update(field) {
 		return e => this.setState({
-			[field]: e.currentTarget.value
+      [field]: e.currentTarget.value
 		});
 	}
 
-  handleApply(e, picker, field) {
-    e.preventDefault();
-    this.setState({
-      startDate: picker.startDate,
-      endDate: picker.endDate
-    });
+  updateStartDate(e, picker) {
+    this.setState({ startDate: picker.startDate })
+  }
+
+  updateEndDate(e, picker) {
+    this.setState({ endDate: picker.endDate })
   }
 
   handleCreateEvent(e) {
     e.preventDefault();
-    if (this.state.title === "") {
-      this.handleErrors()
+    const { title } = this.state;
+
+    if (title === "") {
+      this.setState({ error_alert: 'error-alert' })
     } else {
+      this.setState({ error_alert: "" })
       this.props.createEvent(this.state)
     }
   }
 
-  handleErrors() {
-
-  }
-
   render() {
-    const { title, description, startDate, endDate } = this.state;
-
+    const { title, startDate, endDate, error_alert } = this.state;
+    console.log(startDate)
     return(
       <div className="create-event-form">
         <div className="create-event-form-header">
@@ -56,21 +55,16 @@ class CreateEventForm extends Component {
         <form>
           <input
             type="text"
-            className="create-event-form-title"
+            className={`create-event-form-title ${error_alert}`}
             placeholder="Title"
             value={title}
             onChange={this.update("title")}/>
-          <textarea
-            className="create-event-form-description"
-            placeholder="Description"
-            value={description}
-            onChange={this.update("description")}/>
           <DateRangePicker
             showDropdowns={true}
             startDate={startDate}
             minDate={startDate}
             opens={"center"}
-            onApply={this.handleApply}
+            onApply={this.updateStartDate}
             timePickerIncrement={15}
             timePicker
             singleDatePicker={true}>
@@ -88,7 +82,7 @@ class CreateEventForm extends Component {
             startDate={endDate}
             minDate={startDate}
             opens={"center"}
-            onApply={this.handleApply}
+            onApply={this.updateEndDate}
             timePickerIncrement={15}
             timePicker
             singleDatePicker={true}>
@@ -104,7 +98,7 @@ class CreateEventForm extends Component {
           <input
             type="submit"
             value="Create Event"
-            onClick={this.handleCreateEvent}
+            onClick={this.updateStartTime}
             />
         </form>
       </div>
