@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SplitButton, MenuItem } from 'react-bootstrap';
 import EventsList from './events_list';
 import SearchBar from './search_bar';
 import CreateEventForm from './create_event_form';
@@ -90,20 +91,23 @@ class EventsContainer extends Component {
     })
   }
 
+
   render() {
     return(
       <div className="events-container">
         <div className="events-sidebar">
-          <div
-            className="sort-by-title-button"
-            onClick={ () => this.sortBy("title") }>
-            Sort By Title
-          </div>
-          <div
-            className="sort-by-start-date-button"
-            onClick={ () => this.sortBy("start_time") }>
-            Sort By Start Date
-          </div>
+          <SplitButton bsStyle={"default"} title="Sort By..." id={`split-button-basic-1`}>
+            <MenuItem
+              eventKey="1"
+              onClick={ () => this.sortBy("title") }>
+              Title
+            </MenuItem>
+            <MenuItem
+              eventKey="2"
+              onClick={ () => this.sortBy("start_time") }>
+              Start Date
+            </MenuItem>
+          </SplitButton>
           <SearchBar updateFilter={this.updateFilter}/>
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
