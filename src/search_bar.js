@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
       body: "",
     }
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(event) {
     event.preventDefault();
     this.setState({ body: event.currentTarget.value })
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
   }
 
   render() {
@@ -37,4 +32,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default SearchBar;
