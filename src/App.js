@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import EventsContainer from './events_container';
-require('../css/reset.css')
-require('../css/events.css')
+require('../css/reset.css');
+require('../css/events.css');
+require('../css/daterangepicker.css');
 
 
 class App extends Component {

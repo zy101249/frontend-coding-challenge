@@ -113,11 +113,10 @@
   color: #97bf11;
 }
 
-.create-event-form form input[type=submit] {
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+.btn-primary {
+  margin: 20px auto;
   display: block;
-  margin: auto;
+  width: 80%;
   padding: 5px;
 }
 
