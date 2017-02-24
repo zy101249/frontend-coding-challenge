@@ -7,8 +7,8 @@ class SearchBar extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleInput(event) {
-    this.setState({ body: event.currentTarget.value })
+  handleInput(e) {
+    this.setState({ body: e.currentTarget.value })
   }
 
   render() {
@@ -20,13 +20,13 @@ class SearchBar extends Component {
         <form>
           <input
             type="text"
-            placeholder="Search"
-            value={ body }
+            placeholder="Search Events"
+            value={body}
             onChange={ this.handleInput } />
             <input
             type="submit"
             value="Search"
-            onClick={ (event) => updateFilter(event, body) }/>
+            onClick={ (e) => updateFilter(e, body) }/>
         </form>
       </div>
     )

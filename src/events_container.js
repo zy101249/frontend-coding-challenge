@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventsList from './events_list';
 import SearchBar from './search_bar';
+import CreateEventForm from './create_event_form';
 
 class EventsContainer extends Component {
   constructor(props) {
@@ -36,8 +37,8 @@ class EventsContainer extends Component {
     })
   }
 
-  updateFilter(event, searchFilter) {
-    event.preventDefault();
+  updateFilter(e, searchFilter) {
+    e.preventDefault();
     this.setState({ filter: searchFilter });
   }
 
@@ -63,6 +64,7 @@ class EventsContainer extends Component {
       <div className="events-container">
         <div className="events-sidebar">
           <SearchBar updateFilter={ this.updateFilter }/>
+          <CreateEventForm />
         </div>
         <EventsList events={ this.filterEvents() }/>
       </div>
