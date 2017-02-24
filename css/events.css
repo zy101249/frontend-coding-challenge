@@ -1,0 +1,70 @@
+.header {
+  border-bottom: 1px solid black;
+  height: 50px;
+}
+
+.title {
+  display: block;
+  box-sizing: border-box;
+  padding-left: 20px;
+  width: 50vw;
+  font-size: 30px;
+  color: #f6682F;
+  line-height: 50px;
+  float: left;
+}
+
+.search-bar {
+  box-sizing: border-box;
+  float: right;
+  display: block;
+  width: 50vw;
+}
+
+.search-bar form {
+  margin: 10px 10px 0 0;
+}
+
+.search-bar form input[type=text] {
+  float: right;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.search-bar form input[type=submit] {
+  float: right;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.sideBar {
+  width: 30vw;
+  height: 100vh;
+  border-right: 1px solid black;
+}
+
+/*Events*/
+
+.events-list {
+  width: 75vw;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.events-list .list-item {
+  width: 175px;
+  height: 100px;
+  border: 1px solid black;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}

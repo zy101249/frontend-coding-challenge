@@ -12,10 +12,10 @@ Some notes:
     * [React/ReactDOM](https://github.com/facebook/react)
     * [lodash](https://github.com/lodash/lodash) is included, but most of what you need to do is doable with native ES6 functions
     * [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap), [Twitter (the OG) Bootstrap](https://github.com/twbs/bootstrap)
-    * [whatwg-fetch](https://github.com/github/fetch) for making api requests 
+    * [whatwg-fetch](https://github.com/github/fetch) for making api requests
     * [momentjs](http://momentjs.com/docs/)
 - The events you receive from the Eventable API will have a bunch of data attached to them. It's up to you whether to render that information.
-- Be creative! How your components render and style are entirely up to you. 
+- Be creative! How your components render and style are entirely up to you.
 
 When you're done, email us a link to your cloned repo with the solution.
 
