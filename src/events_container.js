@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import List from './list';
+import EventsList from './events_list';
 import SearchBar from './search_bar';
 
 class EventsContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      events: {},
-      filter: "",
-    };
-    this.asArray = this.asArray.bind(this);
+    this.state = { events: [], filter: "", };
+    this.updateFilter = this.updateFilter.bind(this);
     this.filterEvents = this.filterEvents.bind(this);
     this.retrieveEvents = this.retrieveEvents.bind(this);
   }
@@ -17,14 +14,14 @@ class EventsContainer extends Component {
   componentDidMount() { this.retrieveEvents(); }
 
   retrieveEvents() {
-    const myHeaders = {
+    const requestHeaders = {
       "Authorization": "Token 7761e7e3b25a1d6d315901fcd7180d971f77ea2e",
       "Content-Type": "application/json"
     }
 
     const options = {
       method: 'GET',
-      headers:  myHeaders,
+      headers:  requestHeaders,
     }
 
     const url = "https://api.eventable.com/v1/events/?format=json"
@@ -39,17 +36,21 @@ class EventsContainer extends Component {
     })
   }
 
-  asArray(objects) {
-    return Object.keys(objects).map(key => { return objects[key] });
+  updateFilter(event, searchFilter) {
+    event.preventDefault();
+    this.setState({ filter: searchFilter });
   }
 
   filterEvents() {
     const { events, filter } = this.state;
+    const lowerCaseFilter = filter.toLowerCase();
     const filteredEvents = [];
 
-    this.asArray(events).forEach((event) => {
+    events.forEach((event) => {
       const { title } = event;
-      if (title.includes(filter)) {
+      const lowerCaseTitle = title.toLowerCase();
+
+      if (lowerCaseTitle.includes(lowerCaseFilter)) {
         filteredEvents.push(event);
       }
     })
@@ -60,8 +61,10 @@ class EventsContainer extends Component {
   render() {
     return(
       <div className="events-container">
-        <SearchBar />
-        <List events={ this.filterEvents() }/>
+        <div className="events-sidebar">
+          <SearchBar updateFilter={ this.updateFilter }/>
+        </div>
+        <EventsList events={ this.filterEvents() }/>
       </div>
     );
   }

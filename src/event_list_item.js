@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const ListItem = (props) => {
+const EventListItem = (props) => {
   const { title, start_time, end_time } = props.event;
   const formattedStartTime = moment(start_time).format("MM/DD/YYYY, h:mm a");
   const formattedEndTime = moment(end_time).format("MM/DD/YYYY, h:mm a");
@@ -15,4 +15,4 @@ const ListItem = (props) => {
   )
 }
 
-export default ListItem;
+export default EventListItem;
